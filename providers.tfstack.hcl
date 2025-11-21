@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 required_providers {
   aws = {
     source  = "hashicorp/aws"
@@ -18,24 +15,24 @@ required_providers {
   }
 
   local = {
-    source = "hashicorp/local"
+    source  = "hashicorp/local"
     version = "~> 2.4.0"
   }
 }
 
 provider "aws" "configurations" {
-  for_each = var.regions
+  for_each = deployment.development.inputs.regions
 
   config {
     region = each.value
 
     assume_role_with_web_identity {
-      role_arn           = var.role_arn
-      web_identity_token = var.identity_token
+      role_arn           = deployment.development.inputs.role_arn
+      web_identity_token = deployment.development.inputs.identity_token
     }
 
     default_tags {
-      tags = var.default_tags
+      tags = deployment.development.inputs.default_tags
     }
   }
 }
