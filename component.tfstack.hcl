@@ -1,5 +1,5 @@
 component "ec2_instances" {
-  source = "./components/ec2"
+  source = "./ec2"
 
   inputs = {
     instance_count = 2
