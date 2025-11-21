@@ -9,5 +9,5 @@ deployment "development" {
     identity_token = identity_token.aws.jwt
     default_tags   = { stacks-preview-example = "lambda-component-expansion-stack" }
   }
-  #destroy = true
+  destroy = true
 }
